@@ -17,10 +17,23 @@
       font-family: Georgia, serif;
       display: flex;
       min-height: 100vh;
+      flex-direction: row;
+    }
+
+    a {
+      text-decoration: none;
+      color: #c42137ff;
+      font-weight: bold;
+      display: block;
+      transition: background-color 0.2s;
+    }
+
+    a:hover {
+      color: #004080;
     }
 
     .sidebar {
-      width: 250px;
+      width: 200px;
       background-color: #00264dff;
       color: white;
       padding: 20px;
@@ -35,7 +48,7 @@
     }
 
     .logo img {
-      max-width: 100px;
+      max-width: 160px;
       height: auto;
     }
 
@@ -60,7 +73,7 @@
     }
 
     .sidebar ul li a:hover {
-      background-color: #004080;
+      background-color: #c42137ff;
     }
 
     .main {
@@ -72,7 +85,6 @@
     .banner {
       width: 100%;
       margin-bottom: 30px;
-      padding: 0;
     }
 
     .banner img {
@@ -126,6 +138,66 @@
       width: 100%;
       border: none;
     }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+
+      .sidebar ul {
+        display: flex;
+        justify-content: space-around;
+        flex: 1;
+      }
+
+      .sidebar ul li {
+        padding: 5px;
+      }
+
+      .sidebar .logo {
+        margin-bottom: 0;
+      }
+
+      .logo img {
+        max-width: 100px;
+      }
+
+      .banner img {
+        max-height: 200px;
+      }
+
+      .box {
+        flex: 1 1 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .box img {
+        width: 80px;
+      }
+
+      .box h3 {
+        font-size: 1.1rem;
+      }
+
+      .box p {
+        font-size: 0.95rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -134,10 +206,8 @@
       <img src="icon.png" alt="Logo">
     </div>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html">About Us</a></li>
+      <li><a href="https://forms.gle/bzAcj3zXqtpyDz558">Contact</a></li>
     </ul>
   </div>
 
@@ -164,11 +234,12 @@
         <h3>Contact Us</h3>
         <p>Email: contact@example.com<br>Phone: +00 555 000</p>
         <p>Address: 8 Winmarleigh Street, Warrington, Cheshire, United Kingdom, WA1 1JW</p>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdFVLen9B95Uub-hWsKWIrlBgvYx_Qh4SuG0rkRMCNKEn88HQ/viewform?embedded=true" 
-                width="640" height="500" frameborder="0" marginheight="0" marginwidth="0">
-        </iframe>
       </div>
     </div>
+
+    <footer>
+      <p>#1 Draft<br><a href="">by Jack P</a></p>
+    </footer>
   </div>
 </body>
 </html>
