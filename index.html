@@ -112,22 +112,28 @@
 
     const formData = new FormData(form);
 
-    fetch(scriptURL, {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => {
-      if (response.ok) {
-        form.style.display = "none";
-        successImage.style.display = "block";
-      } else {
-        throw new Error("Network error");
-      }
-    })
-    .catch(error => {
-      console.error("Error:", error);
-      statusDiv.textContent = "Submission failed. Try again later.";
-    });
+      fetch(scriptURL, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.text())      // Read response as text (because it’s HTML-wrapped JSON)
+      .then(text => {
+        try {
+          const data = JSON.parse(text);
+          if (data.result === "success") {
+            form.style.display = "none";
+            successImage.style.display = "block";
+          } else {
+            statusDiv.textContent = data.message || "Submission error.";
+          }
+        } catch (e) {
+          statusDiv.textContent = "Invalid server response.";
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        statusDiv.textContent = "Submission failed. Try again later.";
+      });
   });
 </script>
 </body>
