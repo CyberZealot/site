@@ -5,200 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BOLLINGER SOLUTIONS LTD</title>
   <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <link rel="icon" href="icon.png" type="image/png">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Georgia, serif;
-      display: flex;
-      min-height: 100vh;
-      flex-direction: row;
-    }
-
-    a {
-      text-decoration: none;
-      color: #c42137ff;
-      font-weight: bold;
-      display: block;
-      transition: background-color 0.2s;
-    }
-
-    a:hover {
-      color: #004080;
-    }
-
-    .sidebar {
-      width: 200px;
-      background-color: #00264dff;
-      color: white;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-family: 'Girassol', serif;
-    }
-
-    .logo {
-      margin-bottom: 30px;
-    }
-
-    .logo img {
-      max-width: 160px;
-      height: auto;
-    }
-
-    .sidebar ul {
-      list-style: none;
-      width: 100%;
-      padding: 0;
-      font-family: Georgia, serif;
-    }
-
-    .sidebar ul li {
-      padding: 10px;
-      text-align: center;
-    }
-
-    .sidebar ul li a {
-      color: white;
-      text-decoration: none;
-      display: block;
-      padding: 10px;
-      transition: background-color 0.2s;
-    }
-
-    .sidebar ul li a:hover {
-      background-color: #c42137ff;
-    }
-
-    .main {
-      flex: 1;
-      background-color: #ecf0f1;
-      padding: 15px;
-    }
-
-    .banner {
-      width: 100%;
-      margin-bottom: 30px;
-    }
-
-    .banner img {
-      width: 100%;
-      max-height: 300px;
-      object-fit: cover;
-    }
-
-    .boxes-container {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .box {
-      flex: 1 1 300px;
-      max-width: 550px;
-      background-color: white;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      text-align: center;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .box:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-      background-color: #f9f9f9;
-    }
-
-    .box img {
-      width: 100px;
-      height: auto;
-      margin-bottom: 15px;
-      border-radius: 6px;
-    }
-
-    .box h3 {
-      font-family: Georgia, serif;
-      margin-bottom: 10px;
-    }
-
-    .box p {
-      font-family: Georgia, serif;
-      line-height: 1.6;
-    }
-
-    .box iframe {
-      width: 100%;
-      border: none;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 0.9rem;
-      color: #777;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      body {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        width: 100%;
-        flex-direction: row;
-        justify-content: space-around;
-      }
-
-      .sidebar ul {
-        display: flex;
-        justify-content: space-around;
-        flex: 1;
-      }
-
-      .sidebar ul li {
-        padding: 5px;
-      }
-
-      .sidebar .logo {
-        margin-bottom: 0;
-      }
-
-      .logo img {
-        max-width: 100px;
-      }
-
-      .banner img {
-        max-height: 200px;
-      }
-
-      .box {
-        flex: 1 1 100%;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .box img {
-        width: 80px;
-      }
-
-      .box h3 {
-        font-size: 1.1rem;
-      }
-
-      .box p {
-        font-size: 0.95rem;
-      }
-    }
-  </style>
 </head>
 <body>
   <div class="sidebar">
@@ -229,19 +37,42 @@
         <p>Construction Consultancy</p>
       </div>
 
-      <div class="box">
+      <div class="box" id="contactForm">
         <img src="3.png" alt="Contact Us">
         <h3>Contact Us</h3>
-        <p>Email: contact@example.com<br>Phone: +00 555 000</p>
+        <div id="success-image" style="display: none; text-align: center;">
+          <img src="send-mail.png" alt="Message Sent" style="max-width: 200px;" />
+          <p style="font-size: 1.1rem; color: #c42137ff;">Thank you! Your message has been sent.</p>
+        </div>
+
+        <form id="myForm">
+          <input type="text" name="name" id="name" placeholder="Your Name" required>
+          <input type="email" name="email" id="email" placeholder="Your Email" required>
+          <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+          <button type="submit">Send</button>
+          <div id="form-status" style="margin-top:10px; color: red;"></div>
+        </form>
+
+        <p style="margin-top: 20px;">
+          <section>
+            <div style="font-size: 14px; display: inline-flex; gap: 20px; padding-bottom: 20px;">
+              <a href="tel:+1234567890" aria-label="Call us" style="text-decoration: none;">📞 Phone</a>
+              <a href="mailto:contact@example.com" aria-label="Email us" style="text-decoration: none;">✉️ Email</a>
+            </div>
+          </section>
+          <!--           
+          Email: contact@example.com<br>
+          Phone: +00 555 000<br> -->
+        </p>
+
         <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2381.4953552277023!2d-2.592578684169062!3d53.38669797998866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bada3d66c5ef9%3A0x80bffadc6cf28748!2s8%20Winmarleigh%20St%2C%20Warrington%20WA1%201JW%2C%20UK!5e0!3m2!1sen!2suk!4v1695556243094!5m2!1sen!2suk" 
-        width="100%" 
-        height="300" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2381.4953552277023!2d-2.592578684169062!3d53.38669797998866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bada3d66c5ef9%3A0x80bffadc6cf28748!2s8%20Winmarleigh%20St%2C%20Warrington%20WA1%201JW%2C%20UK!5e0!3m2!1sen!2suk!4v1695556243094!5m2!1sen!2suk"           width="100%" 
+          height="300" 
+          style="border:0; border-radius: 6px;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
       </div>
     </div>
 
@@ -249,5 +80,52 @@
       <p>#1 Draft<br><a href="">by Jack P</a></p>
     </footer>
   </div>
+
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyNbYl_mXbDdHPWxrnKlhvvA5zhf1XeeeucDyK6-nYcEifNo0Xdkxm264AM3yjbGOVv/exec';
+  const form = document.getElementById('myForm');
+  const statusDiv = document.getElementById('form-status');
+  const successImage = document.getElementById('success-image');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    statusDiv.style.color = 'red';
+    statusDiv.textContent = "";
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !email || !message) {
+      statusDiv.textContent = "All fields are required.";
+      return;
+    }
+
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      statusDiv.textContent = "Invalid email address.";
+      return;
+    }
+
+    const formData = new FormData(form);
+
+    fetch(scriptURL, {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        form.style.display = "none";
+        successImage.style.display = "block";
+      } else {
+        throw new Error("Network error");
+      }
+    })
+    .catch(error => {
+      console.error("Error:", error);
+      statusDiv.textContent = "Submission failed. Try again later.";
+    });
+  });
+</script>
 </body>
 </html>
