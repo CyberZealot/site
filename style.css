@@ -1,16 +1,48 @@
+/* Reset box sizing and remove default margin/padding */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* Hide all direct children of .main except sidebar initially */
+.main > *:not(.sidebar) {
+  opacity: 0;
+  transform: translateY(40px);
+  will-change: opacity, transform;
+}
+
+/* Float-in animation keyframes */
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Float-in animation class */
+.float-in {
+  animation-name: floatIn;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+  animation-duration: 1.2s;
+  animation-delay: calc(var(--delay, 0s) + 0.1s);
+}
+
+/* Body and layout */
 body {
   font-family: Georgia, serif;
   display: flex;
   min-height: 100vh;
   flex-direction: row;
+  background-color: #f7f7f7;
 }
 
+/* Links styling */
 a {
   text-decoration: none;
   color: #c42137ff;
@@ -18,11 +50,11 @@ a {
   display: block;
   transition: background-color 0.2s;
 }
-
 a:hover {
   color: #004080;
 }
 
+/* Form inputs and textarea */
 form input,
 form textarea {
   width: 100%;
@@ -37,6 +69,7 @@ textarea {
   resize: vertical;
 }
 
+/* Form button */
 form button {
   background-color: #00264dff;
   color: white;
@@ -47,11 +80,11 @@ form button {
   border-radius: 4px;
   font-family: 'Girassol', serif;
 }
-
 form button:hover {
   background-color: #c42137ff;
 }
 
+/* Sidebar styling */
 .sidebar {
   width: 200px;
   background-color: #00264dff;
@@ -62,28 +95,23 @@ form button:hover {
   align-items: center;
   font-family: 'Girassol', serif;
 }
-
 .logo {
   margin-bottom: 30px;
 }
-
 .logo img {
   max-width: 160px;
   height: auto;
 }
-
 .sidebar ul {
   list-style: none;
   width: 100%;
   padding: 0;
   font-family: Georgia, serif;
 }
-
 .sidebar ul li {
   padding: 10px;
   text-align: center;
 }
-
 .sidebar ul li a {
   color: white;
   text-decoration: none;
@@ -91,28 +119,29 @@ form button:hover {
   padding: 10px;
   transition: background-color 0.2s;
 }
-
 .sidebar ul li a:hover {
   background-color: #c42137ff;
 }
 
+/* Main content styling */
 .main {
   flex: 1;
   background-color: #ecf0f1;
   padding: 15px;
 }
 
+/* Banner */
 .banner {
   width: 100%;
   margin-bottom: 30px;
 }
-
 .banner img {
   width: 100%;
   max-height: 300px;
   object-fit: cover;
 }
 
+/* Container for boxes */
 .boxes-container {
   display: flex;
   gap: 20px;
@@ -120,6 +149,7 @@ form button:hover {
   justify-content: center;
 }
 
+/* Individual box */
 .box {
   flex: 1 1 300px;
   max-width: 550px;
@@ -130,35 +160,31 @@ form button:hover {
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s;
 }
-
 .box:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
   background-color: #f9f9f9;
 }
-
 .box img {
   width: 100px;
   height: auto;
-  margin-bottom: 15px;
+  margin: 15px 0 15px 0;
   border-radius: 6px;
 }
-
 .box h3 {
   font-family: Georgia, serif;
   margin-bottom: 10px;
 }
-
 .box p {
   font-family: Georgia, serif;
   line-height: 1.6;
 }
-
 .box iframe {
   width: 100%;
   border: none;
 }
 
+/* Footer styling */
 footer {
   text-align: center;
   margin-top: 40px;
@@ -166,55 +192,135 @@ footer {
   color: #777;
 }
 
-/* RESPONSIVE STYLES */
+/* Responsive styles */
 @media (max-width: 768px) {
   body {
     flex-direction: column;
   }
-
   .sidebar {
     width: 100%;
     flex-direction: row;
     justify-content: space-around;
   }
-
   .sidebar ul {
     display: flex;
     justify-content: space-around;
     flex: 1;
   }
-
   .sidebar ul li {
     padding: 5px;
   }
-
   .sidebar .logo {
     margin-bottom: 0;
   }
-
   .logo img {
     max-width: 100px;
   }
-
   .banner img {
     max-height: 200px;
   }
-
   .box {
     flex: 1 1 100%;
   }
 }
-
 @media (max-width: 480px) {
   .box img {
     width: 80px;
   }
-
   .box h3 {
     font-size: 1.1rem;
   }
-
   .box p {
     font-size: 0.95rem;
   }
+}
+
+/* About icons grid layout */
+.about-icons-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 3rem;
+  max-width: 600px;
+  margin: 1rem auto;
+  text-align: left;
+  justify-items: center;
+}
+
+/* Individual about icon-text block */
+.about-icon-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+.about-icon-text img {
+  max-width: 100px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.about-icon-text img:hover {
+  transform: scale(1.15);
+  /* box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); */
+}
+
+/* Service cards container */
+.service-cards-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Individual service card */
+.service-card {
+  width: 180px;
+  height: 220px;
+  perspective: 1000px;
+}
+
+/* Inner container for flipping effect */
+.service-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+/* Flip on hover */
+.service-card:hover .service-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front and back faces of service card */
+.service-card-front,
+.service-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Front face image */
+.service-card-front img {
+  max-width: 90px;
+}
+
+/* Back face content */
+.service-card-back {
+  transform: rotateY(180deg);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #222;
+  text-align: center;
 }
