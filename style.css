@@ -5,7 +5,7 @@
   padding: 0;
 }
 
-/* Hide all direct children of .main except sidebar initially */
+/* Hide all direct children of .main except sidebar initially for float-in animation */
 .main > *:not(.sidebar) {
   opacity: 0;
   transform: translateY(40px);
@@ -54,7 +54,7 @@ a:hover {
   color: #004080;
 }
 
-/* Form inputs and textarea */
+/* Form inputs and textarea styling */
 form input,
 form textarea {
   width: 100%;
@@ -64,7 +64,6 @@ form textarea {
   border-radius: 4px;
   font-family: Georgia, serif;
 }
-
 textarea {
   resize: vertical;
 }
@@ -139,9 +138,9 @@ form button:hover {
   width: 100%;
   max-height: 300px;
   object-fit: cover;
-}
+  object-position: center center; /* Default desktop center */}
 
-/* Container for boxes */
+/* Container for content boxes */
 .boxes-container {
   display: flex;
   gap: 20px;
@@ -149,7 +148,7 @@ form button:hover {
   justify-content: center;
 }
 
-/* Individual box */
+/* Individual content box styling */
 .box {
   flex: 1 1 300px;
   max-width: 550px;
@@ -166,10 +165,11 @@ form button:hover {
   background-color: #f9f9f9;
 }
 .box img {
-  width: 100px;
+  width: 100%;
+  max-width: 400px;
   height: auto;
-  margin: 15px 0 15px 0;
-  border-radius: 6px;
+  margin: 15px auto;
+  display: block;
 }
 .box h3 {
   font-family: Georgia, serif;
@@ -177,7 +177,13 @@ form button:hover {
 }
 .box p {
   font-family: Georgia, serif;
-  line-height: 1.6;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  text-align: left;
+  text-justify: inter-word;
+  position: relative;
+  padding-left: 10px;
+  border-left: 3px solid #c42137ff; /* Stylized vertical line */
 }
 .box iframe {
   width: 100%;
@@ -199,6 +205,7 @@ footer {
   }
   .sidebar {
     width: 100%;
+    height: 75%;
     flex-direction: row;
     justify-content: space-around;
   }
@@ -218,14 +225,16 @@ footer {
   }
   .banner img {
     max-height: 200px;
+    object-position: 50% 30%; /* Adjust vertical focus on mobile */
   }
   .box {
     flex: 1 1 100%;
   }
 }
+
 @media (max-width: 480px) {
   .box img {
-    width: 80px;
+    width: 75%;
   }
   .box h3 {
     font-size: 1.1rem;
@@ -256,12 +265,14 @@ footer {
 }
 .about-icon-text img {
   max-width: 100px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
   cursor: pointer;
 }
 .about-icon-text img:hover {
   transform: scale(1.15);
-  /* box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); */
+  /* Optional shadow effect
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  */
 }
 
 /* Service cards container */
