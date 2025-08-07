@@ -281,6 +281,7 @@ footer {
   gap: 2rem;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 /* Individual service card */
