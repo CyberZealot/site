@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BOLLINGER SOLUTIONS LTD</title>
+  <title>Bollinger Solutions Ltd</title>
 
   <!-- Google font Girassol -->
   <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet" />
@@ -23,10 +23,6 @@
     </div>
     <ul>
       <!-- Contact links (uncomment to enable) -->
-      <!--
-      <li><a href="form.html">Contact</a></li>
-      <li><a href="https://forms.gle/bzAcj3zXqtpyDz558">Contact</a></li>
-      -->
     </ul>
   </div>
 
@@ -58,7 +54,7 @@
 
           <div class="about-icon-text">
             <img src="https://img.icons8.com/ios-filled/100/skyscrapers.png" />
-            <p>Projects ranging from £30,000 to over £10 million in value.</p>
+            <p>Projects ranging from £30K to over £10 million in value.</p>
           </div>
 
           <div class="about-icon-text">
@@ -174,12 +170,12 @@
     </footer>
   </div>
 
-  <!-- Float-in animation on page load, excluding sidebar -->
+  <!-- Float-in animation on page load, excluding sidebar 0.2 -->
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       const elementsToAnimate = Array.from(document.querySelectorAll(".main > *:not(.sidebar)"));
       elementsToAnimate.forEach((el, index) => {
-        el.style.setProperty("--delay", `${index * 0.2}s`);
+        el.style.setProperty("--delay", `${index * 0}s`);
         el.classList.add("float-in");
       });
     });
